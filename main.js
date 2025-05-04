@@ -49,7 +49,7 @@ if (DEBUG) {
       this._div.innerHTML = `Lat: ${latlng.lat.toFixed(5)}, Lng: ${latlng.lng.toFixed(5)}<br />Press C to copy to clipboard`;
     } else {
       lastLatLng = null;
-      this._div.innerHTML = 'Move mouse over map';
+      this._div.innerHTML = 'Move mouse over map to see coordinates.';
     }
   };
   debugControl.addTo(map);
