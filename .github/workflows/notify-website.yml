@@ -17,7 +17,7 @@ jobs:
         run: |
           git clone git@github.com:tempodat/tempodat.github.io.git website
           cd website
-          # make sure you’re on the right branch
+          # make sure you're on the right branch
           git checkout main
 
       # 3) pull in the latest scipmap as a subtree
@@ -32,4 +32,4 @@ jobs:
       - name: Push updated website
         run: |
           cd website
-          git push origin main
+          git push origin master
