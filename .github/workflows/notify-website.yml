@@ -3,33 +3,12 @@ name: Dispatch to website
 on: push
 
 jobs:
-  push-to-website:
+  dispatch:
     runs-on: ubuntu-latest
     steps:
-      # 1) load your deploy‐key into an ssh‐agent
-      - name: Start SSH agent & add key
-        uses: webfactory/ssh-agent@v0.5.4
+      - name: Send repository_dispatch
+        uses: peter-evans/repository-dispatch@v2
         with:
-          ssh-private-key: ${{ secrets.WEBSITE_SSH_KEY }}
-
-      # 2) clone the website repo over SSH
-      - name: Checkout website
-        run: |
-          git clone git@github.com:tempodat/tempodat.github.io.git website
-          cd website
-          # make sure you're on the right branch
-          git checkout master
-
-      # 3) pull in the latest scipmap as a subtree
-      - name: Merge in scipmap
-        run: |
-          cd website
-          git remote add scipmap git@github.com:tempodat/scipmap.git
-          git fetch scipmap main
-          git subtree pull --prefix=scipmap scipmap main --squash
-
-      # 4) push back to GitHub over the SSH connection
-      - name: Push updated website
-        run: |
-          cd website
-          git push origin master
+          token: ${{ secrets.PAT }}                    # a PAT with repo access
+          repository: tempodat/tempodat.github.io
+          event-type: scipmap-updated
