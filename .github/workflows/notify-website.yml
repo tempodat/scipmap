@@ -18,15 +18,15 @@ jobs:
           git clone git@github.com:tempodat/tempodat.github.io.git website
           cd website
           # make sure you're on the right branch
-          git checkout main
+          git checkout master
 
       # 3) pull in the latest scipmap as a subtree
       - name: Merge in scipmap
         run: |
           cd website
           git remote add scipmap git@github.com:tempodat/scipmap.git
-          git fetch scipmap main
-          git subtree pull --prefix=scipmap scipmap main --squash
+          git fetch scipmap master
+          git subtree pull --prefix=scipmap scipmap master --squash
 
       # 4) push back to GitHub over the SSH connection
       - name: Push updated website
