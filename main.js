@@ -1,5 +1,5 @@
 // Toggle for coordinate visibility
-const DEBUG = false;
+const DEBUG = true;
 
 function getDateTime() {
   const d = new Date();
