@@ -25,8 +25,8 @@ jobs:
         run: |
           cd website
           git remote add scipmap git@github.com:tempodat/scipmap.git
-          git fetch scipmap master
-          git subtree pull --prefix=scipmap scipmap master --squash
+          git fetch scipmap main
+          git subtree pull --prefix=scipmap scipmap main --squash
 
       # 4) push back to GitHub over the SSH connection
       - name: Push updated website
